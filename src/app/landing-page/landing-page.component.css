@@ -1,0 +1,38 @@
+.headings h2{
+    text-align: center;
+}
+.grid .row .col .sub-headings{
+    display: flex;
+    -ms-flex-item-align: end;
+}
+.grid .row .col{
+    border-radius: 25px;
+  border: 1px solid #5e6d90;
+  padding: 10px; 
+  margin: 10px;
+}
+.grid .row .col h2{
+text-align: center;
+}
+.circle-container{
+    position: relative;
+    width: 14em;
+    height: 14em;
+    padding: 2.8em;
+    border-radius: 50%;
+    background-color: #c6dae4;
+}
+.circle-container img{
+    display: block;
+    width: 50%;
+    /* position: absolute;
+    top: 25%; left: 25%;
+    margin: -2em; */
+}
+.circle-container .images{
+    display: flex;
+    flex-wrap: wrap;
+}
+.circle-container .images3 img{
+width: 33%;
+}
