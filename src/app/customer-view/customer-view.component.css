@@ -1,0 +1,36 @@
+.box1 .grid .box1-sub-box1 .box1-flex figure,table{
+  margin: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.box1 .grid .box1-sub-box1 .box1-flex table {
+border: 1px solid black;
+}
+.centered {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+           
+    transform: translate(-50%, -50%);
+  }
+/* .box1 .grid .box1-sub-box1 .box1-flex table tbody tr td{
+    border: 1px solid black;
+} */
+hr{
+    border-top: 1px dotted #330ae1;
+    width: auto;
+}
+.box1-sub-box2 h2{
+    text-align: center;
+}
+.box1-sub-box2 table {
+    border: 1px solid black;
+}
+.box1,.box2{
+    border-right:1px dotted #330ae1 ;
+    height: auto;
+}
+/* table td {
+    padding: 10px;
+} */
