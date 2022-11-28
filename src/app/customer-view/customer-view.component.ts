@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-view.component.css']
 })
 export class CustomerViewComponent implements OnInit {
-
-  constructor() { }
-
+  showTable: boolean = false;
+  constructor() { 
+  }
+  toggleShowTable(): void {
+    this.showTable = !this.showTable;
+}
   ngOnInit(): void {
   }
 
