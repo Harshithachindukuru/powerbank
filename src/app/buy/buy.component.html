@@ -7,16 +7,16 @@
         <span aria-hidden="true" style="color: #fff;">&times;</span>
       </button>
     </div>
-    <form  >
+    <form>
     <table>
         <tr>
             <th>Number of Power Banks</th>
-            <td ><input class="arrows" type="number" name="points" step=""></td>
+            <td ><input class="arrows" type="number" name="points" step="" [(ngModel)]="quantity"></td>
         </tr>
         <tr>
             <th>Capacity of Power Bank</th>
-            <td><input type="number"></td>
-            <td><input type="text"></td>
+            <td><input type="number" [(ngModel)]="capacity"></td>
+            <td><input type="text" [(ngModel)]="unit"></td>
         </tr>
         <tr>
             <th>Price per kw</th>
@@ -33,10 +33,30 @@
         </tr>
     </table>
     <div class="modal-footer">
-        <button type="submit" class="btn" style="background-color: #3d5fc6;color:#fff">Buy</button>
+        <button type="submit" class="btn" style="background-color: #3d5fc6;color:#fff" data-toggle="modal" data-target="#confirmation-msg">Buy</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </form>
 </div>
+</div>
+</div>
+
+
+
+    <div class="modal fade" id="confirmation-msg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class=" modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+<p style="text-align: center;padding: 10px;">
+    Dear User, A set of "No. of Power Bank {{quantity}}"  with a capacity of "Capacity of each Power Banks {{capacity}} {{unit}}" has been added into your account with a Child contract ID" Generate child contract ID (2324-AA)"
+
+</p>
+<button type="button"  class="btn" style="margin: auto;margin-bottom: 10px;">OK</button>
+</div>
+
 </div>
 </div>

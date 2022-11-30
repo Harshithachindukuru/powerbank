@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buy.component.css']
 })
 export class BuyComponent implements OnInit {
-
+  quantity!: number;
+  capacity!: number;
+  unit!: string;
   constructor() { }
 
   ngOnInit(): void {
