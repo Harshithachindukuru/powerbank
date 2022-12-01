@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BuyDataService } from '../buy-data.service';
 
 @Component({
   selector: 'app-customer-view',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomerViewComponent implements OnInit {
   showTable: boolean = false;
   evValue!: number;
-
+  pbData!: any[];
   billValue!: number;
 
   calculatedValue!: number;
@@ -16,13 +17,16 @@ export class CustomerViewComponent implements OnInit {
   chosenUnit:string="miles";
 
   finalValue!: number;
-  constructor() { 
+  constructor(public pb:BuyDataService) { 
+    
   }
   
   toggleShowTable(): void {
     this.showTable = !this.showTable;
 }
   ngOnInit(): void {
+    console.log(this.pb.getActivepowerBanks().getValue());
+    this.pbData=this.pb.getActivepowerBanks().getValue();
   }
   chooseUnit(e:any){
 
@@ -57,4 +61,15 @@ export class CustomerViewComponent implements OnInit {
     this.finalValue = Math.round((calculatedValue+this.billValue)/25);
 
   }
+  demo(){
+    let update={
+      cost:2,        
+      quantity:100,
+      validity:30,
+      endDate:"2nd sep 2022"
+    }
+this.pbData.unshift(update);
+this.pb.getActivepowerBanks().next(this.pbData);
+
+}
 }
