@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Chart } from 'chart.js/auto';
 import { BuyDataService } from '../buy-data.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { BuyDataService } from '../buy-data.service';
 export class CustomerViewComponent implements OnInit {
   showTable: boolean = false;
   evValue!: number;
+  // p =0;
   pbData!: any[];
   billValue!: number;
 
@@ -17,6 +19,7 @@ export class CustomerViewComponent implements OnInit {
   chosenUnit:string="miles";
 
   finalValue!: number;
+  title ="chart";
   constructor(public pb:BuyDataService) { 
     
   }
@@ -27,6 +30,36 @@ export class CustomerViewComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.pb.getActivepowerBanks().getValue());
     this.pbData=this.pb.getActivepowerBanks().getValue();
+
+    const data = [
+      { month: "Jan", count: 100 },
+      { month: "Feb", count: 120 },
+      { month: "Mar", count: 100 },
+      { month: "Apr", count: 90 },
+      { month: "May", count: 140 },
+      { month: "Jun", count: 80 },
+      { month: "Jul", count: 100 },
+      { month: "Aug", count: 130 },
+      { month: "Sep", count: 120 },
+      { month: "Oct", count: 100 },
+      { month: "Nov", count: 110 },
+    ];
+  
+    new Chart(
+      "acquisitions",
+      {
+        type: 'bar',
+        data: {
+          labels: data.map(row => row.month),
+          datasets: [
+            {
+              label: 'Units Consumed',
+              data: data.map(row => row.count)
+            }
+          ]
+        }
+      }
+    );
   }
   chooseUnit(e:any){
 
@@ -72,4 +105,5 @@ this.pbData.unshift(update);
 this.pb.getActivepowerBanks().next(this.pbData);
 
 }
+
 }

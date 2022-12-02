@@ -8,11 +8,11 @@
   height: auto;">
     <h5 style="text-align: center;font-weight: bold;">MY POWER BANKS</h5>
         <div class=" box1-sub-box1 box1-flex">
-            <figure style="position: relative;">
+            <!-- <figure style="position: relative;">
               <img class="battery" src="assets/images/battery.png " alt="battery">
-              <strong style="font-size: 13px;" class="centered">4 PB's <br><span>40 kw</span><br>quantity</strong>
+              <strong style="font-size: 13px;" class="centered">4 PB's <br><span>40 kW</span><br>quantity</strong>
               <figcaption style="font-size: small;">My PB Wallet</figcaption>
-            </figure>
+            </figure> -->
             <!-- <table class="table power-bank-table table-striped" style="box-shadow: 0 8px 8px -3px grey;">
               <thead class="thead-dark">
                 <tr>
@@ -58,7 +58,7 @@
                 </tr>
               </tbody>
             </table> -->
-            <table class="table power-bank-table table-striped" style="box-shadow: 0 8px 8px -3px grey;">
+            <table  id="pagination" class="table power-bank-table table-striped" style="box-shadow: 0 8px 8px -3px grey;">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Cost</th>
@@ -69,11 +69,13 @@
               </thead>
               <tbody>
                 <tr *ngFor="let pb of this.pb.getActivepowerBanks().getValue()">
+                  <!-- paginate:args{itemsPerPage:5,currentPage:P} -->
                   <td>{{pb.cost}}$</td>
-                  <td>{{pb.quantity}}kw</td>
+                  <td>{{pb.quantity}}kW</td>
                   <td>{{pb.validity}}days</td>
                   <td>{{pb.endDate}}</td>
                 </tr>
+                <!-- <pagination-controls (pageChange)="p=$event"></pagination-controls> -->
               </tbody>
             </table>
            
@@ -123,14 +125,34 @@
                 <input type="number" placeholder="Enter value" [(ngModel)]="billValue" style="height:10%">
               </td>
               <td>
-                <select name="kwh" style="font-size: 13px;padding:2px">
-                  <option value="kwh">kwh</option>
+                <select name="kWh" style="font-size: 13px;padding:2px">
+                  <option value="kWh">kWh</option>
                 </select>
               </td>
             </tr>
             <!-- </tbody> -->
           </table>
-          <a href="#">Click Here to see the calculation </a><br>
+          <a href="#" data-toggle="modal" data-target="#calculateWindow">Click Here to see the calculation </a><br>
+          <div class="modal fade" id="calculateWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h6>Calculation:</h6>
+                  <h6>For EV:</h6>
+                  <p>5 Miles = 1kWh</p>
+                  <p>1 kW = 25kWh</p>
+                  <p>Number of Power Banks Required=(EV+Utility Bill)kWh/25</p>
+                  <h6>Capacity of Power Bank:</h6>
+                  <p>1 Power Bank = 10kW</p>
+                </div>
+              </div>
+              </div>
+              </div>
           <!-- <h6 style="text-align:center ;margin-top: 10px;">Calculate Reset</h6> -->
           <div class="buttons" style="display: inline-block;margin: 10px;">
             <button style="margin: 5px;background-color: #3d5fc6;color: #fff;font-size: 13px;" class="btn calculate"
@@ -160,26 +182,29 @@
 <div class="grid">
   <div class="utility-bill row-12" >
    
-    <h5 style="text-align:center ;font-weight: bold;margin-left:70px ;"> MY UTILITY BILL</h5>
+    <h5 style="text-align:center ;font-weight: bold;margin-left:50px ;width: 100%;"> MY UTILITY BILL</h5>
    <div style="display: flex;">
         <div class="col-6" >
             <div class="graph">
               <h6
-                style="background-color: #3d5fc6;text-align:center ;padding: 5px;font-size:17px;color: #fff;border-radius: 5px;font-weight: normal;width: 120%;">
+                style="background-color: #3d5fc6;text-align:center ;padding: 5px;font-size:17px;color: #fff;border-radius: 5px;font-weight: normal;width: 110%;">
                 Consumption Graph</h6>
-              <img src="assets/images/consumption graph.png" style="width:120%">
+              <!-- <img src="assets/images/consumption graph.png" style="width:120%"> -->
+              <div class="canvas" style="width:110%;height:300%;padding: 5px;">
+                <canvas id="acquisitions" style="width:80%;height:250%;"></canvas>
+              </div>
             </div>
             </div>
-          <div class="col-6">
+          <div class="col-6" style="margin: 45px 0 0 0;">
             <div class="bill-box" style="width: 100%;">
               <div class="grid">
                 <div class="row">
                   <div class="col">
                     <img src="assets/images/outstanding bill.png" style="width: 20%;">
-                    <p>outstanding bill $185</p>
+                    <p>outstanding bill <strong style="color: #85BB65;">$185</strong></p>
                   </div>
                   <div class="col">
-                    <img src="assets/images/pay.png" style="width: 30%;">
+                    <button type="button"class=" pay" style="border:none;padding:0;cursor: pointer;"><img src="assets/images/pay.png" style="width: 70%;"></button>
                     <div class="inputs">
                       <input type="radio" id="card" name="payment" value="card">
                         <label for="card">Pay through card</label><br>
@@ -301,13 +326,13 @@
                 <!-- <div class="row">
                             <div class="col"> -->
                               <div  style="position: relative;">
-                                <img style="width:70px;" src="assets/images/battery.png "alt="battery">
+                                <img style="width:70px;margin-top: 10px;" src="assets/images/battery.png "alt="battery">
                                 <strong class="centered-pb">Create PB</strong>
                                 </div>
                 <div class="small-box"style=" margin:auto 10px ;">
                   <img src="assets/images/earned.png">
                   <p style="font-size: 12px;">Total Earned through Selling<br>
-                  <span style="font-size: 12px;">$1,200</span></p>
+                  <span style="font-size: 12px;color: #85BB65;">$1,200</span></p>
                   <a href="#" style="text-decoration:underline">View all your selling's</a>
                 </div>
                 <!-- </div>
@@ -317,13 +342,13 @@ box-shadow: 0 8px 8px -4px grey;">
   <div class="row">
 <div class="d-flex" style="font-size: 12px;margin:0;height:fit-content;font-weight: bold;">
   <p>Installed Capacity</p>
-  <p >5kw</p>
+  <p >5kW</p>
 </div>
   </div>
   <div class="row">
     <div class="d-flex" style="font-size: 12px;margin:0;height:fit-content;font-weight: bold;">
       <p>Stored Capacity</p>
-      <p >2kw</p>
+      <p >2kW</p>
     </div>
   </div>
 </div>
@@ -342,7 +367,7 @@ box-shadow: 0 8px 8px -4px grey;">
                   <div class="col " style="display: flex;margin: 5px;">
                     <figure style="margin:0 20px;background: #eee;box-shadow: 0 8px 8px -4px grey;padding:0px  15px;height:90%">
                       <img src="assets/images/EV.png">
-                      <figcaption style="font-size: 13px;text-align: center;"><strong>2kw</strong> <br>EV Capacity
+                      <figcaption style="font-size: 13px;text-align: center;"><strong><span style="font-size: large;">2</span>kW</strong> <br>EV Capacity
                       </figcaption>
                     </figure>
                     <table class="table table-bordered" style="width: fit-content;height:fit-content;border-radius:5px;box-shadow: 0 8px 8px -4px grey;text-align: center;height:40%">
@@ -351,14 +376,14 @@ box-shadow: 0 8px 8px -4px grey;">
                           <th scope="col" style="color: #fff;font-size: 12px;"><span style="color: #fff;">Total
                               Consumed</span><br><img style="width:40%;margin: 5px;"
                               src="assets/images/total consumed.png"></th>
-                          <th scope="col" style="color: #fff;font-size: 12px;"><span style="color: #fff;">Passed to Grid</span><br><img
+                          <th scope="col" style="color: #fff;font-size: 12px;"><span style="color: #fff;">Passed to <br>Grid</span><br><img
                               style="width:40%;margin: 5px;" src="assets/images/electric tower.png"></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr style="background-color: #d9d6e7;">
-                          <td style="text-align: center" scope="row">10kw</td>
-                          <td style="text-align: center">4kw</td>
+                          <td style="text-align: center" scope="row">10kW</td>
+                          <td style="text-align: center">4kW</td>
                         </tr>
                       </tbody>
                     </table>
@@ -369,10 +394,10 @@ box-shadow: 0 8px 8px -4px grey;">
                         <div class="row">
                           <div class="col">
                             <img src="assets/images/outstanding bill.png" style="width: 20%;">
-                            <p>outstanding bill $185</p>
+                            <p>outstanding bill <strong style="color: #85BB65;">$185</strong></p>
                           </div>
                           <div class="col">
-                            <img src="assets/images/pay.png" style="width: 30%;">
+                            <button type="button"class=" pay" style="border:none;padding:0;cursor: pointer;"><img src="assets/images/pay.png" style="width: 70%;"></button>
                             <div class="inputs">
                               <input type="radio" id="card" name="payment" value="card">
                                 <label for="card">Pay through card</label><br>

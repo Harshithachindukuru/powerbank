@@ -10,7 +10,7 @@
     position: absolute;
     
     top: 50%;
-    left: 35%;
+    left: 37%;
            
     transform: translate(-50%, -50%);
   }
@@ -20,6 +20,7 @@
     top:50%;
     left:50%;
     font-size: 10px;
+    text-align: center;
   }
   .box1{
     border-right:1px dotted #330ae1 ;
@@ -67,6 +68,15 @@ top:5%;
     border-radius: 5px;
     background: #eee;
 box-shadow: 0 8px 8px -4px grey;
+/* background-image: linear-gradient(to right, indigo, violet); */
+/* background-color: #0093E9; */
+/* background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
+}
+.canvas{
+    background: #eee;
+    box-shadow: 0 8px 8px -4px grey;
+    border: 2px solid #3d5fc6;
+    border-radius: 5px;
 }
 .bill-box .row{
     display: inline-block;
@@ -89,7 +99,7 @@ margin: 5px 30px;
     font-size:12px
 }
 .power-bank-table tr td{
-    padding: 5px ;
+    padding: 15px ;
 }
 .box1-flex{
     display: flex;
@@ -115,6 +125,14 @@ margin: 5px 30px;
 .calculate,.reset {
    
     transition: 0.5s;
+  }
+  .pay{
+    box-shadow: 0 8px 8px -4px grey;
+    border-radius: 5px;
+     background-color: #FF2E2E;
+
+    /* background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
+    /* outline:grey; */
   }
 /* .power-bank-table{
     border-top-left-radius: 9px;

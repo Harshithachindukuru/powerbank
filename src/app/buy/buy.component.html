@@ -9,19 +9,17 @@
     </div>
     <form >
     <table >
-        <tr>
+        <tr >
             <th>Number of Power Banks</th>
             <td ><input class="arrows" type="number" name="points" step="" [(ngModel)]="quantity"></td>
         </tr>
         <tr>
-            <th>Capacity of Power Bank</th>
+            <th>Capacity of Power Bank in kW</th>
             <td><input type="number" name="capacity"  [(ngModel)]="capacity"></td>
-            <td><input type="text" name="units" [(ngModel)]="unit"></td>
         </tr>
         <tr>
-            <th>Price per kw</th>
+            <th>Price per kW in USD</th>
             <td><input type="number"></td>
-            <td><input type="text"></td>
         </tr>
         <tr>
             <th>Cost of Power Bank</th>
@@ -52,7 +50,7 @@
             </button>
             </div>
 <p style="text-align: center;padding: 10px;">
-    Dear User, A set of "No. of Power Bank <strong>{{quantity}}</strong>"  with a capacity of "Capacity of each Power Banks <strong>{{capacity}} {{unit}}</strong>" has been added into your account with a Child contract ID" Generate child contract ID (2324-AA)"
+    Dear User, A set of "<strong>{{quantity}}</strong>"  with a capacity of "<strong>{{capacity}} kW</strong>" has been added into your account with a Child contract ID" Generate child contract ID (2324-AA)"
 
 </p>
 <button type="button"  class="btn" data-dismiss="modal" style="margin: auto;margin-bottom: 10px;" (click)="eraseForm()" >OK</button>

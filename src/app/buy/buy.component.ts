@@ -9,7 +9,6 @@ import { BuyDataService } from '../buy-data.service';
 export class BuyComponent implements OnInit {
   quantity!: number;
   capacity!: any;
-  unit!: string;
   cost!: any;
   timeline!:any;
   pbData!: any[];
