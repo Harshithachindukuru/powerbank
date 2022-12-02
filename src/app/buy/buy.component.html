@@ -18,11 +18,18 @@
             <td><input type="number" name="capacity"  [(ngModel)]="capacity"></td>
         </tr>
         <tr>
-            <th>Price per kW in USD</th>
-            <td><input type="number"></td>
+            <th>Type of Renewable Resource</th>
+            <td>
+                <select class="custom-select" name="types" id="types" style="border: 1px solid grey;">
+                    <option value="">Select..</option>
+                    <option value="saab">Solar Photovoltaic</option>
+                    <option value="opel">Wind Generator</option>
+                    <option value="audi">Bio-gas Generator</option>
+                  </select>
+            </td>
         </tr>
         <tr>
-            <th>Cost of Power Bank</th>
+            <th>Cost of Power Bank in USD</th>
             <td><input type="number" name="cost" [(ngModel)]="cost"></td>
         </tr>
         <tr>
@@ -30,7 +37,7 @@
             <td><input type="date" name="timeline" [(ngModel)]="timeline"></td>
         </tr>
     </table>
-    <div class="modal-footer">
+    <div class="modal-footer" style="justify-content: center;">
         <button type="submit" class="btn" data-dismiss="modal" style="background-color: #3d5fc6;color:#fff" data-toggle="modal" data-target="#confirmation-msg"(click)="confirmBuy()" >Buy</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>

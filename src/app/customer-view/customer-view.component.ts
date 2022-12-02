@@ -8,7 +8,7 @@ import { BuyDataService } from '../buy-data.service';
   styleUrls: ['./customer-view.component.css']
 })
 export class CustomerViewComponent implements OnInit {
-  showTable: boolean = false;
+  showTable: boolean = true;
   evValue!: number;
   // p =0;
   pbData!: any[];
@@ -24,9 +24,9 @@ export class CustomerViewComponent implements OnInit {
     
   }
   
-  toggleShowTable(): void {
-    this.showTable = !this.showTable;
-}
+//   toggleShowTable(): void {
+//     this.showTable = !this.showTable;
+// }
   ngOnInit(): void {
     console.log(this.pb.getActivepowerBanks().getValue());
     this.pbData=this.pb.getActivepowerBanks().getValue();
@@ -91,7 +91,7 @@ export class CustomerViewComponent implements OnInit {
         calculatedValue=this.evValue/5
 
       }
-    this.finalValue = Math.round((calculatedValue+this.billValue)/25);
+    this.finalValue = Math.round(((calculatedValue+this.billValue)/25)/10);
 
   }
   demo(){
